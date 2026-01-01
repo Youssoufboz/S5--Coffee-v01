@@ -2,6 +2,7 @@
   "name": "s58-coffee-website",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://youssoufboz.github.io/S5--Coffee-v01",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
