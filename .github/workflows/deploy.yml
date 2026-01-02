@@ -28,10 +28,17 @@ jobs:
     - name: Build project
       run: npm run build
 
-    - name: Add base path to HTML files
+    - name: Fix paths for GitHub Pages
       run: |
-        find out -name "*.html" -type f -exec sed -i 's|href="/|href="/S5--Coffee-v01/|g' {} +
-        find out -name "*.html" -type f -exec sed -i 's|src="/|src="/S5--Coffee-v01/|g' {} +
+        # Fix all HTML files
+        find out -name "*.html" -type f -exec sed -i 's|href="/_next|href="/S5--Coffee-v01/_next|g' {} +
+        find out -name "*.html" -type f -exec sed -i 's|src="/_next|src="/S5--Coffee-v01/_next|g' {} +
+        find out -name "*.html" -type f -exec sed -i 's|href="/images|href="/S5--Coffee-v01/images|g' {} +
+        find out -name "*.html" -type f -exec sed -i 's|src="/images|src="/S5--Coffee-v01/images|g' {} +
+        
+        # Fix CSS files
+        find out -name "*.css" -type f -exec sed -i 's|url(/images|url(/S5--Coffee-v01/images|g' {} +
+        find out -name "*.css" -type f -exec sed -i 's|url(/_next|url(/S5--Coffee-v01/_next|g' {} +
 
     - name: Setup Pages
       uses: actions/configure-pages@v4
